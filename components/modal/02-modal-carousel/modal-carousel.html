@@ -1,0 +1,71 @@
+{# @modal-carousel
+#
+# parameters:
+# image         - path
+#}
+<button class="mzp-c-button" type="button">Open Modal 1</button>
+<button class="mzp-c-button" type="button">Open Modal 2</button>
+<button class="mzp-c-button" type="button">Open Modal 3</button>
+
+<div class="mzp-u-modal-content modal-content-one">
+  <figure>
+    <!-- media could be an image or video -->
+    <img class="mzp-c-card-image" src="{{ image | default('/img/image-3-2.jpg') | path }}" alt="">
+    <figcaption>
+      A description with a maximum of 100 characters.
+      That usually means only one or two sentences. <a href="#">Learn more.</a>
+    </figcaption>
+  </figure>
+</div>
+
+<div class="mzp-u-modal-content modal-content-two">
+  <figure>
+    <!-- media could be an image or video -->
+    <img class="mzp-c-card-image" src="{{ image | default('/img/image-3-2.jpg') | path }}" alt="">
+    <figcaption>
+      A description with a maximum of 100 characters.
+      That usually means only one or two sentences. <a href="#">Learn more.</a>
+    </figcaption>
+  </figure>
+</div>
+
+<div class="mzp-u-modal-content modal-content-three">
+  <figure>
+    <!-- media could be an image or video -->
+    <img class="mzp-c-card-image" src="{{ image | default('/img/image-3-2.jpg') | path }}" alt="">
+    <figcaption>
+      A description with a maximum of 100 characters.
+      That usually means only one or two sentences. <a href="#">Learn more.</a>
+    </figcaption>
+  </figure>
+</div>
+
+<script src="{{ '/protocol/js/protocol-modal-carousel.js' | path }}"></script>
+
+
+<script>
+(function() {
+    'use strict';
+
+    var content = document.querySelector('.mzp-u-modal-content');
+    var button = document.querySelector('.mzp-c-button');
+
+    button.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        Mzp.Modal.createModal(e.target, content, {
+            title: 'Modal carousel',
+            className: 'mzp-has-media',
+            prevText: 'Previous item',
+            nextText: 'Next item',
+            closeText: 'Close modal',
+            onCreate: function() {
+                console.log('Modal opened');
+            },
+            onDestroy: function() {
+                console.log('Modal closed');
+            }
+        });
+    }, false);
+})();
+</script>
